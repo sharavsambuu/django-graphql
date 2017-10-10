@@ -13,7 +13,7 @@ class IngredientType(DjangoObjectType):
 class Query(graphene.AbstractType):
     all_categories = graphene.List(CategoryType)
     all_ingredients = graphene.List(IngredientType)
-    def resolve_all_categories(self, info, **kwargs):
+    def resolve_all_categories(self, info, args1, args2):
         return Category.objects.all()
-    def resolve_all_ingredients(self, info, **kwargs):
+    def resolve_all_ingredients(self, info, args1, args2):
         return Ingredient.objects.select_related('category').all()
